@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>security-domain-to-domain</artifactId>
-        <version>14.0.0-SNAPSHOT</version>
+        <version>16.0.0.CR1-SNAPSHOT</version>
     </parent>
     <artifactId>security-domain-to-domain-ejb</artifactId>
     <name>Quickstart: security-domain-to-domain - ejb</name>
@@ -53,7 +53,7 @@
             as the API is included in JBoss EAP -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 

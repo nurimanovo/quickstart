@@ -19,14 +19,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.wildfly.bom</groupId>
-        <artifactId>quickstart</artifactId>
-        <version>13.0.0.Final</version>
-        <relativePath />
+        <groupId>org.wildfly.quickstarts</groupId>
+        <artifactId>quickstart-parent</artifactId>
+        <!--
+        Maintain separation between the artifact id and the version to help prevent
+        merge conflicts between commits changing the GA and those changing the V.
+        -->
+        <version>16.0.0.CR1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <artifactId>spring-kitchensink-basic</artifactId>
-    <groupId>org.wildfly.quickstarts</groupId>
-    <version>14.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Quickstart: spring-kitchensink-basic</name>
     <description>Getting Started with Spring 4 on JBoss</description>
@@ -38,11 +41,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-     <properties>
-        <!-- Third Party Spring dependencies -->
-        <version.h2db>1.4.190</version.h2db>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -66,7 +64,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
-            <version>${version.h2db}</version>
+            <version>${version.com.h2database}</version>
         </dependency>
 
         <!-- Needed for running tests (you may also use TestNG) -->
@@ -96,7 +94,7 @@
              Provides portable constraints such as @Email 
              Hibernate Validator is shipped in JBoss EAP -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <scope>provided</scope>
         </dependency>
@@ -104,21 +102,21 @@
         <!-- Annotation processor raises compilation errors whenever constraint
             annotations are incorrectly used. -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Import the JPA API using the provided scope It is included in JBoss EAP -->
         <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
         <!-- Bring in the Servlet jars to avoid errors while compiling with jdt. -->
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -135,7 +133,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.xml.bind</groupId>
-            <artifactId>jboss-jaxb-api_2.2_spec</artifactId>
+            <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
             <scope>test</scope>
         </dependency>
 

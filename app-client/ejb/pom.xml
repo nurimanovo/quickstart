@@ -21,8 +21,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>app-client</artifactId>
-        <version>14.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>16.0.0.CR1-SNAPSHOT</version>
     </parent>
     <artifactId>app-client-ejb</artifactId>
     <packaging>ejb</packaging>
@@ -55,7 +54,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
         </dependency>
     </dependencies>
 

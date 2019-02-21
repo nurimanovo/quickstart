@@ -22,12 +22,10 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>jaxws-retail</artifactId>
-        <version>14.0.0-SNAPSHOT</version>
+        <version>16.0.0.CR1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>jaxws-retail-service</artifactId>
-    <groupId>org.wildfly.quickstarts</groupId>
-    <version>14.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Quickstart: jaxws-retail - service</name>
     <description>This project is a working example of a JAX-WS web service retail endpoint; this is the service POM file</description>
@@ -47,20 +45,14 @@
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!-- used to pull correct dependencies for jaxws-tools-maven-plugin  -->
         <dependency>
-            <groupId>org.jboss.ws.cxf</groupId>
-            <artifactId>jbossws-cxf-client</artifactId>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-jaxws-client-bom</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.xml.ws</groupId>
-            <artifactId>jboss-jaxws-api_2.2_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.jws</groupId>
-            <artifactId>jsr181-api</artifactId>
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -92,13 +84,13 @@
                     <wsdls>
                         <wsdl>${basedir}/src/main/webapp/WEB-INF/wsdl/ProfileMgmtService.wsdl</wsdl>
                     </wsdls>
-                    
+                    <fork>true</fork>
                     <extension>true</extension>
                     <verbose>false</verbose>
                     <endpointClass></endpointClass>
                     <!-- some JDK implementations forbid file access for external schema,
                          see http://docs.oracle.com/javase/8/docs/api/javax/xml/XMLConstants.html#ACCESS_EXTERNAL_SCHEMA -->
-                    <argLine>-Djavax.xml.accessExternalSchema=all</argLine>
+                    <argLine>-Djavax.xml.accessExternalSchema=all -Dlog4j.configuration=file:${basedir}/src/main/resources/log4j.properties</argLine>
                     <targetPackage>org.jboss.quickstarts.ws.jaxws.samples.retail.profile</targetPackage>
                 </configuration>
                 <executions>

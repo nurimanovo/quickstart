@@ -1,15 +1,9 @@
-= inter-app: Communicate Between Two Applications Using EJB and CDI
-:author: Pete Muir
-:productName: WildFly
-:productNameFull: WildFly Application Server
-:jbossHomeName: WILDFLY_HOME
-:productVersion: 12
-:buildRequirements: Java 8.0 (Java SDK 1.8) or later and Maven 3.3.1 or later
 include::../shared-doc/attributes.adoc[]
 
+= inter-app: Communicate Between Two Applications Using EJB and CDI
+:author: Pete Muir
 :level: Advanced
 :technologies: EJB, CDI, JSF
-:source: {githubRepoUrl}
 
 [abstract]
 The `inter-app` quickstart shows you how to use a shared API JAR and an EJB to provide inter-application communication between two WAR deployments.
@@ -19,7 +13,7 @@ The `inter-app` quickstart shows you how to use a shared API JAR and an EJB to p
 
 == What is it?
 
-The `inter-app` quickstart shows you how to easily communicate between two modular deployments to {productNameFull}. Two WARs, with a shared API JAR, are deployed to the application server. EJB is used to provide inter-application communication, with EJB beans alised to CDI beans, making the inter-application communication transparent to clients of the bean.
+The `inter-app` quickstart shows you how to easily communicate between two modular deployments to {productNameFull}. Two WARs, with a shared API JAR, are deployed to the application server. EJB is used to provide inter-application communication, with EJB beans aliased to CDI beans, making the inter-application communication transparent to clients of the bean.
 
 CDI only provides intra-application injection within a top level deployment, for example, an EAR, WAR, or JAR. This improves performance of the application server, as to satisfy an injection point all possible candidates have to be scanned / analyzed. If inter-app injection was supported by CDI, performance would scale according to the number of deployments you have (the more deployments in the running system, the slower the deployment). Java EE injection uses unique JNDI names for the wiring, so each injection point is O(1). The approach shown here combines the two approaches such that you limit the name based wiring to one location in your code, and the main consumers of components can use CDI injection to reference these name wired components. For the name approach to work though, you still need to publish instances, and EJB singletons allow you to do that with just one extra annotation.
 
@@ -48,22 +42,11 @@ a| This project contains the second WAR.
 * It exposes an EJB singleton and a simple UI that allows you to read the value set on the bean in `appA`.
 |===
 
-//*************************************************
-// Add System Requirements
-//*************************************************
-// == System Requirements
+// System Requirements
 include::../shared-doc/system-requirements.adoc[leveloffset=+1]
-
-//*************************************************
-// Add Use of JBoss Home Name
-//*************************************************
-// == Use of {jbossHomeName}
+// Use of {jbossHomeName}
 include::../shared-doc/use-of-jboss-home-name.adoc[leveloffset=+1]
-
-//*************************************************
-// Start the server with the default profile
-//*************************************************
-// == Start the {productName} Standalone Server
+// Start the {productName} Standalone Server
 include::../shared-doc/start-the-standalone-server.adoc[leveloffset=+1]
 
 == Build and Deploy the Quickstart
@@ -112,14 +95,11 @@ $ mvn wildfly:undeploy -pl appA,appB
 $ mvn wildfly:undeploy -pl shared
 ----
 
-//*************************************************
-// Add JBoss Developer Studio instructions
-//*************************************************
-// == Run the Quickstart in Red Hat JBoss Developer Studio or Eclipse
+// Run the Quickstart in Red Hat Developer Studio or Eclipse
 include::../shared-doc/run-the-quickstart-in-jboss-developer-studio.adoc[leveloffset=+1]
 
-// Additional JBoss Developer Studio instructions
-This quickstart consists of multiple projects containing interdependencies on each other, so it deploys and runs differently in JBoss Developer Studio than the other quickstarts.
+// Additional Red Hat Developer Studio instructions
+This quickstart consists of multiple projects containing interdependencies on each other, so it deploys and runs differently in {JBDSProductName} than the other quickstarts.
 
 . In the *Servers* tab, right-click on the {productName} server and choose *Start*.
 . Deploy the projects in one of the following ways.
@@ -130,8 +110,5 @@ This quickstart consists of multiple projects containing interdependencies on ea
 . To undeploy the *{artifactId}-app-appB* project, right-click on it and choose *Run As* –>; *Maven build*. Enter `wildfly:undeploy` for the *Goals* and click *Run*.
 . To undeploy the `{artifactId}-app-appA` project, right-click on it and choose *Run As* –>; *Maven build*. Enter `wildfly:undeploy` for the *Goals* and click *Run*.
 
-//*************************************************
-// Add info to debug the application
-//*************************************************
-// == Debug the Application
+// Debug the Application
 include::../shared-doc/debug-the-application.adoc[leveloffset=+1]

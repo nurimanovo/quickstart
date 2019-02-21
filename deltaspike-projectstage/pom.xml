@@ -18,14 +18,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.wildfly.bom</groupId>
-        <artifactId>quickstart</artifactId>
-        <version>13.0.0.Final</version>
-        <relativePath />
+        <groupId>org.wildfly.quickstarts</groupId>
+        <artifactId>quickstart-parent</artifactId>
+        <!--
+        Maintain separation between the artifact id and the version to help prevent
+        merge conflicts between commits changing the GA and those changing the V.
+        -->
+        <version>16.0.0.CR1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>deltaspike-projectstage</artifactId>
-    <groupId>org.wildfly.quickstarts</groupId>
-    <version>14.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Quickstart: deltaspike-projectstage</name>
     <description>DeltaSpike Project Stage: shows how to use DeltaSpike ProjectStage that allows to use implementations depending on the current environment</description>
@@ -34,14 +36,10 @@
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <properties>
-        <version.deltaspike.core>1.5.1</version.deltaspike.core>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -80,7 +78,7 @@
             scope as the API is included in WildFly 10 -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+            <artifactId>jboss-annotations-api_1.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -88,15 +86,15 @@
             in WildFly 10 -->
         <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
-            <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+            <artifactId>jboss-jsf-api_2.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
         <!-- Import the JPA API, we use provided scope as the API is included
             in WildFly 10 -->
         <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
             <scope>provided</scope>
         </dependency>
 

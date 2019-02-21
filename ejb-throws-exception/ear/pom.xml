@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wildfly.quickstarts</groupId>
         <artifactId>ejb-throws-exception</artifactId>
-        <version>14.0.0-SNAPSHOT</version>
+        <version>16.0.0.CR1-SNAPSHOT</version>
     </parent>
     <artifactId>ejb-throws-exception-ear</artifactId>
     <packaging>ear</packaging>
@@ -38,18 +38,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wildfly.quickstarts</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>ejb-throws-exception-ejb</artifactId>
             <type>ejb</type>
         </dependency>
         <dependency>
-            <groupId>org.wildfly.quickstarts</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>ejb-throws-exception-ejb-api</artifactId>
         </dependency>
 
         <!-- Depend on the EJB module and WAR so that we can package them -->
         <dependency>
-            <groupId>org.wildfly.quickstarts</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>ejb-throws-exception-web</artifactId>
             <type>war</type>
         </dependency>
@@ -68,7 +68,7 @@
                         libraries are in easy way to package any libraries needed in the ear, and
                         automatically have any modules (EJB-JARs and WARs) use them -->
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <fileNameMapping>no-version</fileNameMapping>
+                    <outputFileNameMapping>@{artifactId}@@{dashClassifier?}@.@{extension}@</outputFileNameMapping>
                 </configuration>
             </plugin>
             <!-- The WildFly plug-in deploys your ear to a local JBoss EAP container. 
